@@ -1,0 +1,233 @@
+✅ CONSINGA FINAL — Sistema de Venta de Tickets para Eventos
+
+Materia: Programación 1
+Tema: Listas, tuplas, diccionarios, conjuntos, matrices, funciones, slicing, archivos, strings, recursividad.
+
+Desarrollar un programa de consola en Python que gestione la venta de tickets para eventos organizados por la productora ficticia “Strong in the Middle Events”.
+El sistema debe permitir:
+✔ Login de usuarios
+✔ Gestión de eventos
+✔ Venta de tickets
+✔ Reportes
+✔ Persistencia en archivos
+✔ Uso obligatorio de varios conceptos de la materia
+
+🧩 1. Archivos obligatorios
+
+El programa debe iniciar cargando información desde archivos externos.
+
+usuarios.txt
+
+Cada línea:
+
+usuario;contraseña;rol
+
+
+Roles: admin, vendedor
+
+eventos.txt
+
+Cada línea:
+
+id_evento;nombre;fecha;capacidad;precio
+
+tickets_vendidos.txt
+
+Formato:
+
+id_ticket;id_evento;dni;nombre_apellido;tipo_ticket
+
+🔐 2. Login
+
+Implementar un sistema de login que:
+
+Pida usuario y contraseña
+
+Valide contra el archivo
+
+Si falla → repetir (usando continue)
+
+Según el rol, mostrar un menú distinto
+
+📌 3. Menús
+Menú ADMIN
+
+Listar eventos
+
+Crear evento nuevo
+
+Vender ticket
+
+Reportes avanzados
+
+Guardar y salir
+
+Menú VENDEDOR
+
+Listar eventos
+
+Vender ticket
+
+Reportes básicos
+
+Salir
+
+🎫 4. Funcionalidades del sistema
+✔ (A) Listar eventos
+
+Mostrar todos los eventos
+
+Leer desde lista/diccionario cargado del archivo
+
+✔ (B) Crear evento (solo admin)
+
+Validar:
+
+ID no repetida (usar conjunto para chequear IDs existentes)
+
+Capacidad > 0
+
+Precio > 0
+
+Al crearse, almacenarlo en memoria y guardarlo al salir.
+
+✔ (C) Vender ticket
+
+Pedir:
+
+ID del evento
+
+DNI
+
+Nombre y apellido
+
+Tipo de ticket
+
+Validaciones:
+
+Evento existente
+
+Capacidad disponible
+
+DNI no repetido para ese evento (opcional)
+
+Cada venta debe tener un id_ticket único (podés generarlo con len(lista)+1000 o lo que quieras).
+
+Registrar la venta:
+
+En memoria
+
+En archivo al salir
+
+📊 5. Reportes (obligatorio al menos 5)
+
+Se debe usar listas, diccionarios, slicing, conjuntos y al menos una función recursiva en alguno.
+
+Podés elegir, pero estas opciones están pensadas para cubrir los temas:
+
+1) Total de tickets vendidos por evento
+
+Recorrer tickets → contar
+
+Mostrar resultado ordenado
+
+Usar slicing para mostrar solo los primeros N resultados si el usuario quiere
+
+Ejemplo:
+"Mostrá el TOP 3 de eventos más vendidos"
+
+2) Recaudación total y por evento
+
+precio × tickets
+
+Mostrar tabla
+
+3) Buscar comprador por DNI
+
+Recorrer lista
+
+Mostrar todos los tickets de ese DNI
+
+Evitar duplicados usando conjuntos
+
+4) Porcentaje de ocupación de cada evento
+
+vendidos/capacidad × 100
+
+5) Ranking de eventos ordenados de mayor a menor venta
+
+Usar un ordenamiento propio, obligatorio:
+
+Puede ser recursivo (merge sort, quick sort, o tu propio método**)
+
+O un ordenamiento simple recursivo
+
+6) Listado alfabético de asistentes
+
+Usar sorted() o tu propio ordenamiento
+
+Aplicar slicing para mostrar A-C, D-H, etc.
+
+7) Reporte de DNIs duplicados
+
+Cargar todos los DNIs en un conjunto
+
+Detectar cuáles aparecen >1 vez
+
+8) Reporte por tipo de ticket (general/VIP)
+
+Contar
+
+Ordenar
+
+Aplicar slicing si es lista grande
+
+💾 6. Persistencia
+
+Al finalizar el programa:
+
+Guardar tickets en tickets_vendidos.txt
+
+Guardar nuevos eventos en eventos.txt
+
+🧱 7. Estructura del programa (obligatorio modular)
+
+Debes tener funciones como:
+
+login()
+
+cargar_usuarios()
+
+cargar_eventos()
+
+cargar_tickets()
+
+menu_admin()
+
+menu_vendedor()
+
+listar_eventos()
+
+crear_evento()
+
+vender_ticket()
+
+reporte_1(), reporte_2(), etc.
+
+guardar_eventos()
+
+guardar_tickets()
+
+🔁 8. Uso obligatorio de contenidos de la materia
+
+✔ Listas → almacenar eventos y tickets
+✔ Tuplas → representar registros inmutables (opcional)
+✔ Diccionarios → almacenar eventos y ventas
+✔ Conjuntos → validar duplicados
+✔ Matrices → aunque no es necesario, podés usarla para un reporte o tabla
+✔ Funciones → código modular
+✔ Recursividad → algún ordenamiento o búsqueda
+✔ Strings → split, join, validaciones
+✔ Archivos → lectura y escritura
+✔ Slicing → en TOP N, cortes de listas, rangos de reportes
+✔ Try/Except → validaciones de entrada

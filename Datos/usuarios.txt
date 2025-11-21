@@ -1,0 +1,13 @@
+Nombre;Apellido;Login;Edad;Rol 
+Julieta;Molina;jmolina;Pulse!88;20;Comprador
+Benjamín;Vega;bvega;SkyFall_91;19;Comprador
+Abril;González;agonzález;WolfByte#6;32;Comprador
+Morena;Rodríguez;mrodríguez;BeatDrop$22;22;Comprador
+Thiago;Moreno;tmoreno;BeatDrop$22;32;Comprador
+Bruno;Silva;bsilva;BeatDrop$22;23;Comprador
+Delfina;Rodríguez;drodríguez;Blaze!503;25;Comprador
+Emma;Álvarez;eálvarez;WolfByte#6;18;Comprador
+Gael;Navarro;gnavarro;Xy9!aP32;30;Comprador
+Delfina;González;dgonzález;Xy9!aP32;32;Comprador
+Morena;Silva;msilva;Xy9!aP32;26;Comprador
+Ambar;Martínez;amartínez;Pulse!88;22;Comprador
