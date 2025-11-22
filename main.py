@@ -7,9 +7,9 @@ def login(diccionario):
         
         usuario = modulosGenericos.ingresarUsuario().lower()
         
-        while not usuario in diccionario:
+        if not usuario in diccionario:
             print("Usuario inexistente. Vuelva a ingresar")
-            usuario = modulosGenericos.ingresarUsuario().lower()
+            continue
         
         password = modulosGenericos.ingresarContraseña()
 
@@ -17,7 +17,7 @@ def login(diccionario):
             print('Contraseña invalida. Vuelva a ingresar')
             password = modulosGenericos.ingresarContraseña()
         
-        while password != diccionario[usuario]:
+        while password != diccionario[usuario]['contrasenia']:
             print('Contraseña invalida. Vuelva a ingresar')
             password = modulosGenericos.ingresarContraseña()
         print('Login exitoso')
@@ -26,7 +26,8 @@ def login(diccionario):
 
 def main():
     diccionario = generarDiccionarioUsuarios()
-    login(diccionario)
-
+    acceso = login(diccionario)
+    if acceso:
+        modulosGenericos.crearUsuarioCompra(diccionario)
 main()
             

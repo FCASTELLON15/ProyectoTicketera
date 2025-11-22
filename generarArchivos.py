@@ -35,22 +35,25 @@ def archivoUsuarios():
     except FileNotFoundError:
         print('El archivo no se ha podido abrir correctamente.')
     else:
-        archivo.write('Nombre;Apellido;Login;Edad;Rol \n')
+        archivo.write('Nombre;Apellido;Dni;Login;Contrasenia;Edad;Rol \n')
         
         for x in range(cantidadUsuarios):
             nombre = nombres[random.randint(0,len(nombres)-1)]
             apellido = apellidos[random.randint(0,len(apellidos)-1)]
+            dni = random.randint(1,70000000)
             login = nombre[:1] + apellido
             contrasenia = contrasenas[random.randint(0,len(contrasenas)-1)]
             edad = random.randint(18,35)
-            rol = 'Comprador'
-            linea = nombre + ';' + apellido + ';' + login.lower() + ';' + contrasenia + ';' + str(edad) + ';' + rol + '\n'
+            rol = 'Compras'
+            linea = nombre + ';' + apellido + ';' + str(dni) + ';' + login.lower() + ';' + contrasenia + ';' + str(edad) + ';' + rol + '\n'
             
             archivo.write(linea)
         print('OK- Archivo de usuarios generado correctamente.')
-        archivo.close()
+    archivo.close()
 
 
+#genero un diccionaro que va a contener los datos del archivo, se usara como base de datos
+# para poder buscar informacion si es necesario
 def generarDiccionarioUsuarios():
     diccionario = {}
     try:
@@ -63,14 +66,21 @@ def generarDiccionarioUsuarios():
             if contador:
                 contador = False
             else:
-                nombre,apellido,login,contrasenia,edad,rol = linea.strip().split(';')
+                nombre,apellido,dni,login,contrasenia,edad,rol = linea.strip().split(';')
                 
-                if not login in diccionario:
-                    diccionario[login] = contrasenia
+                
+                diccionario[login] = {'dni':dni,
+                                      'nombre':nombre,
+                                      'apellido':apellido,
+                                      'contrasenia':contrasenia,
+                                      'edad':edad,
+                                      'rol':rol}
+                
     archivo.close()
         
     return diccionario
-    
+
+#crea el archivo eventos.txt y escribe el header
 def archivoEventos():
     try:
         archivo = open('Datos/eventos.txt', 'w')
@@ -79,7 +89,8 @@ def archivoEventos():
     else:
         archivo.write('IdEvento;IdCompra;Nombre;Apellido;Login \n')
     archivo.close()
-    
+
+#creo el archivo tickets_vendidos.txt y escribe el header   
 def archivoTickets():
     try:
         archivo = open('Datos/tickets_vendidos.txt', "w")
@@ -91,7 +102,6 @@ def archivoTickets():
     
 def generar():
     archivoUsuarios()
-    generarDiccionarioUsuarios()
     archivoEventos()
     archivoTickets()
     return True
