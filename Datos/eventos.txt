@@ -1,1 +1,2 @@
-IdEvento;IdCompra;Nombre;Apellido;Login 
+IdEvento;NombreEvento;Fecha;Capacidad 
+E619;Navidad;2025-12-24 00:00:00;4000/n

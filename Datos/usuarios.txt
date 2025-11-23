@@ -9,5 +9,5 @@ Renata;Moreno;68838187;rmoreno;Moon_47$;26;Compras
 Bautista;Romero;21351253;bromero;N3onTiger*;29;Compras
 Benjamín;Moreno;10591362;bmoreno;Xy9!aP32;24;Compras
 Santino;Torres;14845122;storres;Blaze!503;25;Compras
-Facundo;Castellon;41073939;fcastellon;daleboca;27;Admnistrador
+Facundo;Castellon;41073939;fcastellon;daleboca;27;Administrador
 Sol;Perez;42820178;sperez;Solines;25;Compras

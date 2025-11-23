@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 def ingresarUsuario():
     try:
         usuario = input('Ingrese su login: ').strip()
@@ -121,12 +122,60 @@ def generarIdEvento():
     evento = evento.zfill(4)
     return evento
         
+def ingresarFecha():
+    while True:
+        fecha_str = input("Ingresá la fecha (dd/mm/aaaa): ")
+        try:
+            fecha = datetime.strptime(fecha_str, "%d/%m/%Y")
+            return fecha   # Si entra acá, la fecha es válida
+        except ValueError:
+            print("Fecha inválida. Intentá de nuevo.")
 
 
-def crearEvento():
+def crearEvento(diccionario):
     #falta agregar funcionalidades, por ejemplo que el evento no este repetidos
-    idEvento = generarIdEvento()
-    nombre = ingresarNombre().capitalize()
+    #Funciona OK!
+    try:
+        archivo = open('Datos/eventos.txt','a')
+    except FileNotFoundError:
+        print('Error al abrir el archivo de eventos.')
+    else:
+        while True:
+            #este bucle es para que no se genere un ID igual, en caso que suceda, vuelve a generarlo
+            # hasta que cree uno distinto
+            idEvento = generarIdEvento()
+            if idEvento in diccionario:
+                continue
+            break
+        nombre = ingresarNombre().capitalize()
+        fecha = ingresarFecha()
+        while True:
+            try:
+                capacidad = input('Ingrese la capacidad del evento: ')
+                capacidad = int(capacidad)
+                break
+            except ValueError:
+                print('Solo puedes ingresar numeros.')
+        capacidad = capacidad
+        # agrego todos los datos al diccionario que va a esta agrupado por IDEVENTO
+        diccionario[idEvento] = {
+            'nombreEvento':nombre,
+            'fechaEvento': str(fecha),
+            'capacidad': capacidad}
+        #tammbien actualizamos el archivo agregando la linea al final del mismo
+        linea = idEvento + ';' + nombre + ';' + str(fecha) + ';' + str(capacidad) + '\n'
+        print('El ID de el nuevo evento es ', idEvento)
+        print('Evento creado correctamente y base de datos actualizada.')
+        archivo.write(linea)
+        archivo.close()
+
+    
+
+
+
+
+    
+    
 
 
     

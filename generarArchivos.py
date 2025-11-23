@@ -87,7 +87,7 @@ def archivoEventos():
     except FileNotFoundError:
         print('El archivo no se ha podido abrir correctamente.')
     else:
-        archivo.write('IdEvento;IdCompra;Nombre;Apellido;Login \n')
+        archivo.write('IdEvento;NombreEvento;Fecha;Capacidad \n')
     archivo.close()
 
 #creo el archivo tickets_vendidos.txt y escribe el header   

@@ -20,14 +20,39 @@ def login(diccionario):
         while password != diccionario[usuario]['contrasenia']:
             print('Contraseña invalida. Vuelva a ingresar')
             password = modulosGenericos.ingresarContraseña()
-        print('Login exitoso')
-        return True
+        
+        break
+    print('Login exitoso')
+    return True,usuario
 
 
 def main():
     diccionario = generarDiccionarioUsuarios()
-    acceso = login(diccionario)
+    diccionarioEventos = {}
+
+    acceso,usuario = login(diccionario)
     if acceso:
-        modulosGenericos.crearUsuarioCompra(diccionario)
+        '''if diccionario[usuario]['rol'] == 'Administrador':
+            while True:
+                print('1- Crear evento')
+                print('2- Salir')
+                while True:
+                    try:
+
+                        opcion = int(input('Ingresa una opcion: '))
+                        assert opcion != 1 or opcion != 2
+                        break
+                    except ValueError:
+                        print('Debes ingresar una opcion valida.')
+                    except AssertionError:
+                        print('Debes ingresar una opcion valida.')
+                if opcion == 1:
+                    modulosGenericos.crearEvento(diccionarioEventos)
+                    continue
+                else:
+                    break'''
+    
+
+
 main()
             
